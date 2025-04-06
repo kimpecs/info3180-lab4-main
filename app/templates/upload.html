@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container">
+  <h1>File Upload</h1>
+  <form method="POST" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+          {{ form.file.label }}
+          {{ form.file(class="form-control") }}
+          {% if form.file.errors %}
+              {% for error in form.file.errors %}
+                  <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+          {% endif %}
+      </div>
+      <button type="submit" class="btn btn-primary">Upload</button>
+  </form>
+</div>
+{% endblock %}
